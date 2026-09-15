@@ -60,5 +60,5 @@
 
 - **JitPack primary** — 소비자 프로젝트가 개인/조직/외부 레포 어디서든 credential 없이 사용 가능
 - **GitHub Packages** — private 배포 / 캐시 최적화 필요 시 옵션
-- **GitHub Pages JavaDoc** — https://catomat0.github.io/Alh/
+- **GitHub Pages JavaDoc** — https://cattomato-libs.github.io/Alh/
 - **Apache License 2.0**

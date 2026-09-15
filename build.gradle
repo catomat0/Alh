@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'com.github.catomat0'
+group = 'com.github.cattomato-libs'
 version = (System.getenv('RELEASE_VERSION') ?: findProperty('releaseVersion') ?: '1.0.0')
         .toString().replaceFirst(/^v/, '')
 
@@ -54,7 +54,7 @@ publishing {
             pom {
                 name = 'aop-log-helper'
                 description = 'Drop-in Spring Boot AOP logging starter with traceId(MDC), auto method logging, slow-call detection and sensitive-data masking'
-                url = 'https://github.com/catomat0/Alh'
+                url = 'https://github.com/cattomato-libs/Alh'
                 licenses {
                     license {
                         name = 'The Apache License, Version 2.0'
@@ -62,8 +62,8 @@ publishing {
                     }
                 }
                 scm {
-                    url = 'https://github.com/catomat0/Alh'
-                    connection = 'scm:git:https://github.com/catomat0/Alh.git'
+                    url = 'https://github.com/cattomato-libs/Alh'
+                    connection = 'scm:git:https://github.com/cattomato-libs/Alh.git'
                 }
             }
         }
@@ -71,7 +71,7 @@ publishing {
     repositories {
         maven {
             name = 'GitHubPackages'
-            url = uri('https://maven.pkg.github.com/catomat0/Alh')
+            url = uri('https://maven.pkg.github.com/cattomato-libs/Alh')
             credentials {
                 username = System.getenv('GITHUB_ACTOR') ?: findProperty('gpr.user')
                 password = System.getenv('GITHUB_TOKEN') ?: findProperty('gpr.token')

@@ -1,12 +1,12 @@
 # aop-log-helper
 
-[![Release](https://img.shields.io/github/v/release/catomat0/Alh?sort=semver)](https://github.com/catomat0/Alh/releases)
-[![JavaDoc](https://img.shields.io/badge/javadoc-latest-blue)](https://catomat0.github.io/Alh/)
+[![Release](https://img.shields.io/github/v/release/cattomato-libs/Alh?sort=semver)](https://github.com/cattomato-libs/Alh/releases)
+[![JavaDoc](https://img.shields.io/badge/javadoc-latest-blue)](https://cattomato-libs.github.io/Alh/)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
 
 Spring Boot용 AOP 로깅 스타터. 요청 traceId(MDC) + 컨트롤러/서비스 자동 로깅 + Slow 감지 + 민감정보 마스킹을 자동 설정으로 제공합니다.
 
-📖 **[JavaDoc API 레퍼런스](https://catomat0.github.io/Alh/)** · **[CHANGELOG](CHANGELOG.md)** · **[Releases](https://github.com/catomat0/Alh/releases)**
+📖 **[JavaDoc API 레퍼런스](https://cattomato-libs.github.io/Alh/)** · **[CHANGELOG](CHANGELOG.md)** · **[Releases](https://github.com/cattomato-libs/Alh/releases)**
 
 - **MDC 요청 컨텍스트** — 모든 요청마다 `requestId`, `userId`, `method`, `uri` 를 자동 세팅 (`X-Request-Id` 헤더 전파 지원)
 - **자동 로깅 AOP** — 설정한 pointcut 표현식과 매칭되는 메서드는 진입/종료 자동 로그 (파라미터·소요시간·예외 포함)
@@ -33,7 +33,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.catomat0:Alh:1.0.0'
+    implementation 'com.github.cattomato-libs:Alh:1.0.0'
 }
 ```
 
@@ -64,7 +64,7 @@ dependencies {
 </repositories>
 
 <dependency>
-    <groupId>com.github.catomat0</groupId>
+    <groupId>com.github.cattomato-libs</groupId>
     <artifactId>Alh</artifactId>
     <version>1.0.0</version>
 </dependency>
@@ -124,7 +124,7 @@ gpr.token=ghp_xxxxxxxxxxxxxxxxxxxxx
 ```gradle
 repositories {
     maven {
-        url = uri('https://maven.pkg.github.com/catomat0/Alh')
+        url = uri('https://maven.pkg.github.com/cattomato-libs/Alh')
         credentials {
             username = project.findProperty('gpr.user') ?: System.getenv('GITHUB_ACTOR')
             password = project.findProperty('gpr.token') ?: System.getenv('GITHUB_TOKEN')
@@ -135,7 +135,7 @@ repositories {
 
 **Step 4. CI 별 세팅**
 
-- **GitHub Actions (같은 catomat0 계정 레포)** — workflow 에 `permissions: { packages: read }` 만 추가하면 자동 `GITHUB_TOKEN` 사용 가능
+- **GitHub Actions (같은 cattomato-libs 조직 레포)** — workflow 에 `permissions: { packages: read }` 만 추가하면 자동 `GITHUB_TOKEN` 사용 가능
 - **GitHub Actions (다른 계정/조직)** — 본인 PAT 을 secret 으로 등록 후 주입
   ```yaml
   - run: ./gradlew build
