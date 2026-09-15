@@ -6,7 +6,7 @@
 
 Spring Boot용 AOP 로깅 스타터. 요청 traceId(MDC) + 컨트롤러/서비스 자동 로깅 + Slow 감지 + 민감정보 마스킹을 자동 설정으로 제공합니다.
 
-📖 **[JavaDoc API 레퍼런스](https://catomat0.github.io/Alh/)** · **[Releases](https://github.com/catomat0/Alh/releases)**
+📖 **[JavaDoc API 레퍼런스](https://catomat0.github.io/Alh/)** · **[CHANGELOG](CHANGELOG.md)** · **[Releases](https://github.com/catomat0/Alh/releases)**
 
 - **MDC 요청 컨텍스트** — 모든 요청마다 `requestId`, `userId`, `method`, `uri` 를 자동 세팅 (`X-Request-Id` 헤더 전파 지원)
 - **자동 로깅 AOP** — 설정한 pointcut 표현식과 매칭되는 메서드는 진입/종료 자동 로그 (파라미터·소요시간·예외 포함)
