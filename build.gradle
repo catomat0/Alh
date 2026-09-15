@@ -1,0 +1,91 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group = 'com.github.catomat0'
+version = (System.getenv('RELEASE_VERSION') ?: findProperty('releaseVersion') ?: '1.0.0')
+        .toString().replaceFirst(/^v/, '')
+
+base {
+    archivesName = 'aop-log-helper'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    withSourcesJar()
+    withJavadocJar()
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    springBootVersion = '3.4.5'
+}
+
+dependencies {
+    compileOnly "org.springframework.boot:spring-boot-starter:${springBootVersion}"
+    compileOnly "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    compileOnly "org.springframework.boot:spring-boot-starter-aop:${springBootVersion}"
+    compileOnly "ch.qos.logback:logback-classic"
+    compileOnly "jakarta.annotation:jakarta.annotation-api"
+
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}"
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+    testImplementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    testImplementation "org.springframework.boot:spring-boot-starter-aop:${springBootVersion}"
+    testImplementation "org.awaitility:awaitility"
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifactId = 'aop-log-helper'
+
+            pom {
+                name = 'aop-log-helper'
+                description = 'Drop-in Spring Boot AOP logging starter with traceId(MDC), auto method logging, slow-call detection and sensitive-data masking'
+                url = 'https://github.com/catomat0/Alh'
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                scm {
+                    url = 'https://github.com/catomat0/Alh'
+                    connection = 'scm:git:https://github.com/catomat0/Alh.git'
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = 'GitHubPackages'
+            url = uri('https://maven.pkg.github.com/catomat0/Alh')
+            credentials {
+                username = System.getenv('GITHUB_ACTOR') ?: findProperty('gpr.user')
+                password = System.getenv('GITHUB_TOKEN') ?: findProperty('gpr.token')
+            }
+        }
+    }
+}
+
+tasks.withType(Javadoc).configureEach {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.encoding = 'UTF-8'
+    options.charSet = 'UTF-8'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

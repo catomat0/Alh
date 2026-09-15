@@ -1,0 +1,4 @@
+com.github.catomat0.aoploghelper.mdc.autoconfigure.AlhMdcAutoConfiguration
+com.github.catomat0.aoploghelper.logging.autoconfigure.AlhLoggingAutoConfiguration
+com.github.catomat0.aoploghelper.alert.autoconfigure.AlhAlertAutoConfiguration
+com.github.catomat0.aoploghelper.autoconfigure.AlhAutoConfiguration
